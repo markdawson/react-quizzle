@@ -16,10 +16,12 @@ const isCorrect = (isCorrect) => (
 const ChoiceSet = ((choices) => 
 	choices.map((
 		choice => 
-		<div style={{ margin: 20 }}>
-		<Paper style={style} zDepth={3} onClick={() => isCorrect(choice.is_correct)}>
-			<div>{choice.choice_text}</div>
-		</Paper>
+		
+		<div>
+		<br/><br/>
+			<div onClick={() => isCorrect(choice.is_correct)}>
+				<p>{choice.choice_text}</p>
+			</div>
 		</div>
 	))
 );
