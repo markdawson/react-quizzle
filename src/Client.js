@@ -1,4 +1,7 @@
+import request from 'ajax-request';
+import axios from 'axios';
 import fetch from 'isomorphic-fetch';
+
 
 class Client {
 	constructor() {
@@ -7,15 +10,45 @@ class Client {
 
 	getQuestions(questionIds) {
 		const url = ('http://quizzle-adamfish.cloudapps.unc.edu/api/questions/');
+		
+	    return fetch(url, {
+	      method: 'get',
+	      headers: {
+	        accept: 'application/json',
+	      },
+	    }).then(this.checkStatus)
+	      .then(this.parseJson);
+		  
 
-		return fetch(url, {
-			method: 'get',
-			mode: 'no-cors',
-			headers: {
-				accept: 'application/json',
-			},
-		}).then(this.checkStatus)
-		  .then(this.parseJson);
+		// return request({
+		// 	url: url,
+		// 	method: 'get',
+		// 	headers: {
+		// 		accept: 'application/json',
+		// 	},
+		// }, function(err,)).then(this.checkStatus)
+		//   .then(this.parseJson);
+
+		// return request({
+		// 	url: url,
+		// 	method: 'get',
+		// 	headers: {
+		// 		accept: 'application/json',
+		// 	},
+		// }).then(this.checkStatus)
+		//   .then(this.parseJson);
+	
+
+	// 	return request({
+	// 		url: url,
+	// 		method: 'get',
+	// 		mode: 'no-cors',
+	// 		headers: {
+	// 			accept: 'application/json',
+	// 		},
+	// 	}).then(this.checkStatus)
+	// 	  .then(this.parseJson);
+
 	}
 
 	checkStatus(response) {
